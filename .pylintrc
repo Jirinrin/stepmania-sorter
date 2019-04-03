@@ -1,0 +1,10 @@
+[MESSAGES CONTROL]
+disable = 
+  unnecessary-semicolon,
+  missing-docstring,
+  trailing-whitespace,
+  pointless-string-statement,
+  bad-whitespace
+
+max-line-length = 160
+indentation = 2
