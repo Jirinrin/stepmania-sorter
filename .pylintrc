@@ -4,7 +4,8 @@ disable =
   missing-docstring,
   trailing-whitespace,
   pointless-string-statement,
-  bad-whitespace
+  bad-whitespace,
+  bare-except
 
 max-line-length = 160
 indentation = 2

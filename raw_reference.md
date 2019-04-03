@@ -1,19 +1,20 @@
 <!-- jpoppy, anime style &stuff. novelty-type music -->
 ## JPOP
-# artists
-
-# songs
+# artist
+croove
+# title
   
+# pack
 
 
 <!-- speaks for itself -->
 ## KPOP
-
+# pack
 
 
 <!-- wubby, glitchy -->
 ## WUB
-# artists
+# artist
 sota fujimori
 memme
 m2u
@@ -25,10 +26,12 @@ rin
 ocelot
 function phantom
 c-show
+<!-- forte escape -->
 
 <!-- stuff like house or trance, that has like a constant beat or sth -->
 ## CLUB
-
+# title
+<!-- ask the wind -->
 
 <!-- eurobeat -->
 ## EUROBEAT
@@ -45,12 +48,14 @@ c-show
 *HERE START REQUIREMENTS FOR EXTRA LABELS*
 <!-- in any way related to touhou franchises -->
 ### TOUHOU : TH
-# collections
+# pack
 
 
 <!-- has voice of a vocaloid in it -->
 ### VOCALOID : V
-# collections
+# pack
+
+# title
 
 
 <!-- has nanahira-or-so-like cute highpitched voice in it -->
