@@ -3,15 +3,21 @@
 import os
 from typing import List
 
+from utility import safe_move
 from folder_reference import FOLDER_REFERENCE as FR
 
 print()
 
 SONGS_DIR = r'F:\voorSnelkoppelingen\H\OpenITG\Songs'
-NEW_SONGS_DIR = r'F:\voorSnelkoppelingen\H\OpenITG\SongsOrganised'
+# NEW_SONGS_DIR = r'F:\voorSnelkoppelingen\H\OpenITG\SongsOrganised'
 
-def format_title(previous_title: str, labels: List[str]):
-    return f'<{", ".join(labels)}> {previous_title}'
+def format_title(raw_previous_title: str, labels: List[str], artist: str = None):
+    # als previous title al labels heeft snij dat deel dan eerst weg
+    previous_title = raw_previous_title
+    if raw_previous_title.startswith('<') and '>' in raw_previous_title:
+        previous_title = raw_previous_title.split('>')[1]
+
+    return f' { artist + " - " if artist else "<" + ", ".join(labels) + ">" } {previous_title}'
     
 
 
@@ -45,30 +51,46 @@ def main():
 
             artist: str
             title: str
+            title_line: int
 
-            opened_sm_file = open(os.path.join(song_path, sm_file))
+            sm_file = os.path.join(song_path, sm_file)
+            opened_sm_file = open(sm_file)
+
             for j, line in enumerate(opened_sm_file):
                 if line.startswith('#NOTES') or j > 100:
                     break
                 elif line.startswith('#TITLE:'):
                     title = line.split(':')[-1].strip().split(';')[0]
+                    title_line = j
                 elif line.startswith('#ARTIST:'):
                     artist = line.split(':')[-1].strip().split(';')[0]
 
-            opened_sm_file.close()
+            
 
             try:
                 migration_info = FR.match_song({
                     'artist': artist, 'title': title, 'pack': pack
                 })
-                print(migration_info)
+                print(migration_info, artist, title, pack)
 
+                new_title = format_title(title, migration_info['labels'])
+                new_folder_name = format_title(title, migration_info['labels'], artist)
 
+                # also write it in the file
 
+                safe_move(
+                    os.path.join(SONGS_DIR, pack, song), 
+                    os.path.join(SONGS_DIR, '__' + migration_info['collection'] + '__'),
+                    new_folder_name
+                )
 
-
-
-
+                # TODO: Could do this with temporary copy or sth
+                lines = opened_sm_file.read().splitlines()
+                lines[title_line] = f'#TITLE:{new_title};'
+                opened_sm_file.close()
+                writing_sm_file = open(sm_file,'w')
+                writing_sm_file.write('\n'.join(lines))
+                writing_sm_file.close()
             # TODO: throw this if it's not my own exception
             except Exception as e:
                 if str(e) == 'No match':
@@ -76,9 +98,6 @@ def main():
                 else:
                     raise e
                 
-
-            print(migration_info)
-
             return
             # hier nog een hoop formatting doen enzo en dan daadwerkelijk de migraties plaats laten vinden
 
