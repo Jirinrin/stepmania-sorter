@@ -25,7 +25,6 @@ class FolderReference:
         }
 
     def match_song(self, song_object):
-        print(song_object)
         best_match = {
             'collection': None,
             'criterion': None,
@@ -126,8 +125,6 @@ def setup_folder_reference():
     return ref
 
 FOLDER_REFERENCE = setup_folder_reference()
-
-print(FOLDER_REFERENCE.data)
 
 '''
 Things to look for:

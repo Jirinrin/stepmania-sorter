@@ -60,3 +60,7 @@ c-show
 
 <!-- has nanahira-or-so-like cute highpitched voice in it -->
 ### DENPA : D
+
+
+### LIKE : :)
+# song

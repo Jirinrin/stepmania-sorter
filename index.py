@@ -61,6 +61,14 @@ def main():
                 migration_info = FR.match_song({
                     'artist': artist, 'title': title, 'pack': pack
                 })
+                print(migration_info)
+
+
+
+
+
+
+
             # TODO: throw this if it's not my own exception
             except Exception as e:
                 if str(e) == 'No match':
@@ -98,5 +106,15 @@ Functionality:
 - Group stuff by 'something' (?)
 - Rename folders to make sense or sth
 - Give stuff extra tags
+
+
+pythonding moet ook kunnen: 
+collections opsplitsen als grootte over bepaalde threshold 
+bijv (1), (2) appenden als titel al te vinden in een collection 
+slash eigenlijk vooral bij mapnaam als Windowsoverschrijving niet lukt 
+
+Ook gwn dat het dus voor de collecties (_KPOP_) enzo heen moet gaan en evt renamen slash dus verplaatsen ALS het naar een andere plek moet obv nieuwe analyse 
+
+en nog label voor bijv boven bepaalde bpm, slash als bijv hele nare range, of als echt extreem lage bpm
 
 '''
