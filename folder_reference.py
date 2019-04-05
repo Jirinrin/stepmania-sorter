@@ -6,7 +6,7 @@ from utility import similar
 
 
 RAW_REFERENCE_FILE = 'raw_reference.md'
-MATCHING_THRESHOLD = 0.5
+MATCHING_THRESHOLD = 0.8
 
 CRITERION_PRIORITIES = {
     'pack':   0,
@@ -99,23 +99,21 @@ def setup_folder_reference():
     criterion: str  = None
 
     for line in ref_lines:
-        if sub_ref:
-            if line.startswith('<!--'):
-                sub_ref    = None
-                collection = None
-                criterion  = None
-                continue
-            
+        new_collection: bool = line.startswith('##')
+        if line.startswith('<!--') or new_collection:
+            sub_ref    = None
+            collection = None
+            criterion  = None
+        if sub_ref and not new_collection:
             if line.startswith('#'):
                 criterion = line.split('#')[-1].strip()
                 ref.data[sub_ref][collection][criterion] = []
             elif line.strip() and criterion:
                 ref.data[sub_ref][collection][criterion].append(line.strip())
-            
-        else:
+        elif new_collection:
             if line.startswith('###'):
                 sub_ref = 'labels'
-            elif line.startswith('##'):
+            else:
                 sub_ref = 'collections'
 
             if sub_ref:
@@ -125,6 +123,8 @@ def setup_folder_reference():
     return ref
 
 FOLDER_REFERENCE = setup_folder_reference()
+
+# print(FOLDER_REFERENCE.data)
 
 '''
 Things to look for:

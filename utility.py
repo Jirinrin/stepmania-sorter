@@ -3,6 +3,7 @@
 from difflib import SequenceMatcher
 import shutil
 from os import path
+from re import sub
 
 def similar(string_1: str, string_2: str):
     return SequenceMatcher(None, string_1.lower(), string_2.lower()).ratio()
@@ -25,3 +26,6 @@ def safe_move(file_path: str, out_dir: str, dst = None):
         while path.exists(path.join(out_dir, '{}_{}{}'.format(base, i, extension))):
             i += 1
         shutil.move(file_path, path.join(out_dir, '{}_{}{}'.format(base, i, extension)))
+
+def format_for_windows(name: str) -> str:
+    return sub(r'[<>:"/\|?*]', '-', name)

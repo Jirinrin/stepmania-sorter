@@ -1,7 +1,7 @@
 <!-- jpoppy, anime style &stuff. novelty-type music -->
 ## JPOP
 # artist
-croove
+
 # title
   
 # pack
@@ -10,6 +10,9 @@ croove
 <!-- speaks for itself -->
 ## KPOP
 # pack
+
+# artist
+forte escape
 
 
 <!-- wubby, glitchy -->
@@ -35,6 +38,10 @@ c-show
 
 <!-- eurobeat -->
 ## EUROBEAT
+# artist
+dave rodgers
+# title
+ray of illuminati
 
 
 <!-- really constant high energy, stuff like hardcore and pumpcore and stuff -->
@@ -43,6 +50,23 @@ c-show
 
 <!-- quiet singing or music etc -->
 ## ZEN
+
+<!--  -->
+## OLD-CHEESY
+# artist
+croove
+
+
+## EPOP-MODERN
+
+
+## EPOP-RETRO
+
+
+## ROCKY
+# artist
+nien
+
 
 
 *HERE START REQUIREMENTS FOR EXTRA LABELS*
@@ -61,6 +85,11 @@ c-show
 <!-- has nanahira-or-so-like cute highpitched voice in it -->
 ### DENPA : D
 
-
+<!--  -->
 ### LIKE : :)
-# song
+# title
+
+<!--  -->
+### TEST : T
+# title
+ray of illuminaty
