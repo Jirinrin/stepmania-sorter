@@ -6,6 +6,7 @@ from os import path
 from re import sub
 
 def similar(string_1: str, string_2: str):
+    # print(string_1, string_2)
     return SequenceMatcher(None, string_1.lower(), string_2.lower()).ratio()
 
 def safe_move(file_path: str, out_dir: str, dst = None):

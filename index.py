@@ -26,7 +26,7 @@ def format_title(raw_previous_title: str, labels: List[str], artist: str = None)
     
 
 
-def main(check_diff: bool):
+def main(check_diff: bool = False):
     
     if not os.path.exists(SONGS_DIR):
         raise Exception('Path doesn\'t exist')
@@ -67,37 +67,39 @@ def main(check_diff: bool):
 
             diff_counter = -1
 
-            print(song_path)
             for j, line in enumerate(opened_sm_file):
-                print(j)
                 if check_diff and diff_counter >= 0:
-                    if line.startswith('#NOTES:'):
+                    if '#NOTES:' in line:
                         diff_counter = 5
                     if diff_counter == 1:
                         diffs.append( int( line.split(':')[0].strip() ) )
                     if diff_counter > 0:
                         diff_counter -= 1
                     continue
-                if not title and line.startswith('#TITLE:'):
+                if not check_diff and j > 100:
+                    break
+                if j > 50:
+                    break
+                if not title and '#TITLE:' in line:
                     title = line.split(':')[-1].strip().split(';')[0]
                     title_line = j
-                elif not artist and line.startswith('#ARTIST:'):
+                elif (not artist) and '#ARTIST:' in line:
                     artist = line.split(':')[-1].strip().split(';')[0]
-                elif not real_pack_name and line.startswith('#PACK:'):
+                elif not real_pack_name and '#PACK:' in line:
                     real_pack_name = line.split(':')[-1].strip().split(';')[0]
-                elif not is_glitchy and line.startswith('#BPMS:') and len(line) > GLITCHINESS_CHARS_THRESHOLD:
+                elif not is_glitchy and '#BPMS:' in line and len(line) > GLITCHINESS_CHARS_THRESHOLD:
                     is_glitchy = True
-                elif not has_background_video and line.startswith('#BGCHANGES:') and len(line) > 20:
+                elif not has_background_video and '#BGCHANGES:' in line and len(line) > 20:
                     has_background_video = True
-                elif line.startswith('#NOTES:'):
+                elif '#NOTES:' in line:
                     diff_counter = 4
 
             opened_sm_file.close()
 
             diffs.sort()
-            print(diffs)
 
             try:
+                print(song_path)
                 migration_info = FR.match_song({
                     'artist': artist, 'title': title, 'pack': real_pack_name or pack
                 })
@@ -106,10 +108,11 @@ def main(check_diff: bool):
                     migration_info['labels'].append('v')
                 if is_glitchy:
                     migration_info['labels'].append('g')
-                if diffs[-1] < EASY_THRESHOLD:
-                    migration_info['labels'].append('e')
-                if diffs[0] > HARD_THRESHOLD:
-                    migration_info['labels'].append('h')
+                if check_diff:
+                    if diffs[-1] < EASY_THRESHOLD:
+                        migration_info['labels'].append('e')
+                    if diffs[0] > HARD_THRESHOLD:
+                        migration_info['labels'].append('h')
 
                 new_title = format_title(title, migration_info['labels'])
                 new_folder_name = format_for_windows(format_title(title, migration_info['labels'], artist))
@@ -142,32 +145,21 @@ def main(check_diff: bool):
                     continue
                 else:
                     raise e
-
                 
-            return
+            # Uncomment this to just do 1 time until if finds a single match
+            # return
 
 
-main(True)
+# main(True)
+main()
 
 print()
 
 
 '''
 
-Functionality:
-- Check if it has interesting tricks
-- Do something if it only has a certain max difficulty
-- Group stuff by 'something' (?)
-- Rename folders to make sense or sth
-- Give stuff extra tags
-
-
 pythonding moet ook kunnen: 
 collections opsplitsen als grootte over bepaalde threshold 
-bijv (1), (2) appenden als titel al te vinden in een collection 
-slash eigenlijk vooral bij mapnaam als Windowsoverschrijving niet lukt 
-
-Ook gwn dat het dus voor de collecties (_KPOP_) enzo heen moet gaan en evt renamen slash dus verplaatsen ALS het naar een andere plek moet obv nieuwe analyse 
 
 en nog label voor bijv boven bepaalde bpm, slash als bijv hele nare range, of als echt extreem lage bpm
 

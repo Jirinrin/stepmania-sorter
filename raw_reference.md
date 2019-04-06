@@ -29,6 +29,7 @@ rin
 ocelot
 function phantom
 c-show
+cysmix
 <!-- forte escape -->
 
 <!-- stuff like house or trance, that has like a constant beat or sth -->

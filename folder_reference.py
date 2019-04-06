@@ -44,6 +44,7 @@ class FolderReference:
                 highest_similarity = 0
 
                 for instance in instances:
+                    # print(song_object)
                     rating = similar(instance, song_object[criterion])
                     if rating > MATCHING_THRESHOLD and rating > highest_similarity:
                         highest_similarity = rating
@@ -124,7 +125,7 @@ def setup_folder_reference():
 
 FOLDER_REFERENCE = setup_folder_reference()
 
-print(FOLDER_REFERENCE.data)
+# print(FOLDER_REFERENCE.data)
 
 '''
 Things to look for:
@@ -138,9 +139,5 @@ Further tags to attach per song:
 - like:     definitely approved by me (manual per song or sth)
 - video:    (has background video)
 - meh:      (not much fun or sth, manual)
-
-Stuff:
-- so the 'individual songs' should of course take precedence over if something is in 'artists'
-
 
 '''
