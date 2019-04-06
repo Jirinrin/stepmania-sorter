@@ -124,7 +124,7 @@ def setup_folder_reference():
 
 FOLDER_REFERENCE = setup_folder_reference()
 
-# print(FOLDER_REFERENCE.data)
+print(FOLDER_REFERENCE.data)
 
 '''
 Things to look for:

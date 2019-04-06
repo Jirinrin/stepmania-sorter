@@ -11,6 +11,10 @@ print()
 SONGS_DIR = r'F:\voorSnelkoppelingen\H\OpenITG\Songs'
 # NEW_SONGS_DIR = r'F:\voorSnelkoppelingen\H\OpenITG\SongsOrganised'
 
+GLITCHINESS_CHARS_THRESHOLD = 150
+EASY_THRESHOLD = 6
+HARD_THRESHOLD = 14
+
 def format_title(raw_previous_title: str, labels: List[str], artist: str = None):
     # als previous title al labels heeft snij dat deel dan eerst weg
     new_labels = map(lambda l: l.split(':')[-1].strip(), labels)
@@ -22,7 +26,7 @@ def format_title(raw_previous_title: str, labels: List[str], artist: str = None)
     
 
 
-def main():
+def main(check_diff: bool):
     
     if not os.path.exists(SONGS_DIR):
         raise Exception('Path doesn\'t exist')
@@ -45,37 +49,67 @@ def main():
 
             files = os.listdir(song_path)
             # TODO: test if you can just get filter()[0]
-            sm_file = next(filter(lambda x: x.split('.')[-1] == 'sm', files), None)
+            sm_file  = next(filter(lambda x: x.split('.')[-1] == 'sm', files), None)
 
             if not sm_file:
                 continue
 
-            artist: str
-            title: str
-            title_line: int
-            has_pack_name = False
+            artist: str = None
+            title: str = None
+            title_line: int = None
+            real_pack_name: str = None
+            is_glitchy: bool = False
+            has_background_video = False
+            diffs = []
 
             sm_file = os.path.join(song_path, sm_file)
             opened_sm_file = open(sm_file, 'r', -1, 'utf-8')
 
+            diff_counter = -1
+
             print(song_path)
             for j, line in enumerate(opened_sm_file):
-                if line.startswith('#NOTES') or j > 100:
-                    break
-                elif line.startswith('#TITLE:'):
+                print(j)
+                if check_diff and diff_counter >= 0:
+                    if line.startswith('#NOTES:'):
+                        diff_counter = 5
+                    if diff_counter == 1:
+                        diffs.append( int( line.split(':')[0].strip() ) )
+                    if diff_counter > 0:
+                        diff_counter -= 1
+                    continue
+                if not title and line.startswith('#TITLE:'):
                     title = line.split(':')[-1].strip().split(';')[0]
                     title_line = j
-                elif line.startswith('#ARTIST:'):
+                elif not artist and line.startswith('#ARTIST:'):
                     artist = line.split(':')[-1].strip().split(';')[0]
-                elif line.startswith('#PACK:'):
-                    has_pack_name = True
+                elif not real_pack_name and line.startswith('#PACK:'):
+                    real_pack_name = line.split(':')[-1].strip().split(';')[0]
+                elif not is_glitchy and line.startswith('#BPMS:') and len(line) > GLITCHINESS_CHARS_THRESHOLD:
+                    is_glitchy = True
+                elif not has_background_video and line.startswith('#BGCHANGES:') and len(line) > 20:
+                    has_background_video = True
+                elif line.startswith('#NOTES:'):
+                    diff_counter = 4
 
             opened_sm_file.close()
 
+            diffs.sort()
+            print(diffs)
+
             try:
                 migration_info = FR.match_song({
-                    'artist': artist, 'title': title, 'pack': pack
+                    'artist': artist, 'title': title, 'pack': real_pack_name or pack
                 })
+
+                if has_background_video:
+                    migration_info['labels'].append('v')
+                if is_glitchy:
+                    migration_info['labels'].append('g')
+                if diffs[-1] < EASY_THRESHOLD:
+                    migration_info['labels'].append('e')
+                if diffs[0] > HARD_THRESHOLD:
+                    migration_info['labels'].append('h')
 
                 new_title = format_title(title, migration_info['labels'])
                 new_folder_name = format_for_windows(format_title(title, migration_info['labels'], artist))
@@ -89,7 +123,7 @@ def main():
                 opened_sm_file = open(sm_file, 'r', -1, 'utf-8')
                 lines = opened_sm_file.read().splitlines()
                 lines[title_line] = f'#TITLE:{new_title};'
-                if not has_pack_name:
+                if not real_pack_name:
                     lines.insert(0, f'#PACK:{pack};')
                     lines.insert(1, f'#ORIGINAL_NAME:{song};')
                 opened_sm_file.close()
@@ -103,27 +137,17 @@ def main():
                     new_folder_name
                 )
                 
-            # TODO: throw this if it's not my own exception
             except Exception as e:
                 if str(e) == 'No match':
                     continue
                 else:
                     raise e
+
                 
-            # return
-            # hier nog een hoop formatting doen enzo en dan daadwerkelijk de migraties plaats laten vinden
-
-            # print(song_path)
-            # print(format_title(title, migration_info['labels']))
-
-            
+            return
 
 
-
-
-
-
-main()
+main(True)
 
 print()
 
@@ -131,7 +155,6 @@ print()
 '''
 
 Functionality:
-- Move to right location or sth
 - Check if it has interesting tricks
 - Do something if it only has a certain max difficulty
 - Group stuff by 'something' (?)
@@ -149,4 +172,8 @@ Ook gwn dat het dus voor de collecties (_KPOP_) enzo heen moet gaan en evt renam
 en nog label voor bijv boven bepaalde bpm, slash als bijv hele nare range, of als echt extreem lage bpm
 
 en missch in het raw ding ook namen met puntkommas delimiten ofzo zodat meer overzicht...?
+
+split artiesten op 'feat' (?)
+ 
+labels toch aan rechterkant van title?
 '''

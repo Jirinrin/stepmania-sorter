@@ -18,7 +18,7 @@ def safe_move(file_path: str, out_dir: str, dst = None):
         file.
     '''
     name = dst or path.basename(file_path)
-    if not path.exists(path.join(out_dir, name)):
+    if (not path.exists(path.join(out_dir, name))) or file_path == path.join(out_dir, name):
         shutil.move(file_path, path.join(out_dir, name))
     else:
         base, extension = path.splitext(name)

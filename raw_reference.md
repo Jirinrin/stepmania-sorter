@@ -61,7 +61,8 @@ croove
 
 
 ## EPOP-RETRO
-
+# artist
+3rd coast
 
 ## ROCKY
 # artist
@@ -69,27 +70,38 @@ nien
 
 
 
+<!--  -->
 *HERE START REQUIREMENTS FOR EXTRA LABELS*
 <!-- in any way related to touhou franchises -->
 ### TOUHOU : TH
 # pack
-
+Touhou Gouyoukyou
+Touhou Hokyouso ~ Lunatic Dance Floor
+Touhou Kousaikai ~ Scarlet Festival Gathering
+Touhou Mahouyou ~ Magical Dance Phantasm
+Touhou Densoumu ~ Arrows of Light
+Touhou Fujinya
+Touhou Gensouyou ~ Illusionary Dance Fantasy
+Undefined Fantastic Original Simfiles
 
 <!-- has voice of a vocaloid in it -->
 ### VOCALOID : V
 # pack
-
+Vocaloid Project Pad Pack
+Vocaloid Project Pad Pack 2nd
+Vocaloid Project Pad Pack 3rd
+Vocaloid Project Pad Pack 4th
 # title
 
 
 <!-- has nanahira-or-so-like cute highpitched voice in it -->
 ### DENPA : D
+# artist
+nanahira
+
+
+### ORIGINAL : 
 
 <!--  -->
 ### LIKE : :)
 # title
-
-<!--  -->
-### TEST : T
-# title
-ray of illuminaty
