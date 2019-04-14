@@ -57,6 +57,7 @@ def main(check_diff: bool = False):
             artist: str = None
             title: str = None
             title_line: int = None
+            subtitle: str = None
             real_pack_name: str = None
             is_glitchy: bool = False
             has_background_video = False
@@ -81,12 +82,14 @@ def main(check_diff: bool = False):
                 if j > 50:
                     break
                 if not title and '#TITLE:' in line:
-                    title = line.split(':')[-1].strip().split(';')[0]
+                    title = line.split(':')[1].strip().split(';')[0]
                     title_line = j
+                elif (not subtitle) and '#SUBTITLE:' in line:
+                    subtitle = line.split(':')[1].strip().split(';')[0]
                 elif (not artist) and '#ARTIST:' in line:
-                    artist = line.split(':')[-1].strip().split(';')[0]
+                    artist = line.split(':')[1].strip().split(';')[0]
                 elif not real_pack_name and '#PACK:' in line:
-                    real_pack_name = line.split(':')[-1].strip().split(';')[0]
+                    real_pack_name = line.split(':')[1].strip().split(';')[0]
                 elif not is_glitchy and '#BPMS:' in line and len(line) > GLITCHINESS_CHARS_THRESHOLD:
                     is_glitchy = True
                 elif not has_background_video and '#BGCHANGES:' in line and len(line) > 20:
@@ -101,7 +104,7 @@ def main(check_diff: bool = False):
             try:
                 print(song_path)
                 migration_info = FR.match_song({
-                    'artist': artist, 'title': title, 'pack': real_pack_name or pack
+                    'artist': artist, 'title': title, 'subtitle': subtitle, 'pack': real_pack_name or pack
                 })
 
                 if has_background_video:

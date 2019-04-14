@@ -45,7 +45,7 @@ class FolderReference:
 
                 for instance in instances:
                     # print(song_object)
-                    rating = similar(instance, song_object[criterion])
+                    rating = similar(instance, song_object['title'], song_object['subtitle'] or '') if criterion == 'title' else similar(instance, song_object[criterion])
                     if rating > MATCHING_THRESHOLD and rating > highest_similarity:
                         highest_similarity = rating
 

@@ -5,9 +5,16 @@ import shutil
 from os import path
 from re import sub
 
-def similar(string_1: str, string_2: str):
+def similar(string_1: str, string_2: str, s2_subtitle: str = ''):
+    string1 = string_1.lower()
+    string2 = string_2.lower()
     # print(string_1, string_2)
-    return SequenceMatcher(None, string_1.lower(), string_2.lower()).ratio()
+    if '<in>' in string1:
+        string1 =  string1.split('<in>')[1]
+        if string1 in string2 + s2_subtitle:
+            return 1
+    
+    return SequenceMatcher(None, string1, string2).ratio()
 
 def safe_move(file_path: str, out_dir: str, dst = None):
     '''Safely move a file to the specified directory. If a file with the same name already 

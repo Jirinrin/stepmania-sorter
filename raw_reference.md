@@ -7,6 +7,12 @@
 # pack
 
 
+## JPOPROCK-ALT
+# artist
+buta-otome
+iosys
+halozy
+
 <!-- speaks for itself -->
 ## KPOP
 # pack
@@ -29,25 +35,50 @@ rin
 ocelot
 function phantom
 c-show
+usao
 cysmix
-<!-- forte escape -->
+mononofrog_4sk
+maozon
+jerico
+laz
+izmizm
+nhato
+aran
+uno
+# title
+amorous attention
 
 <!-- stuff like house or trance, that has like a constant beat or sth -->
 ## CLUB
+# artist
+hatsunetsumiko's
+yuuhei satellite
+sumijun
+
 # title
+bluhende nacht
 <!-- ask the wind -->
 
 <!-- eurobeat -->
 ## EUROBEAT
 # artist
+a-one
 dave rodgers
+sound holic
+njk record
 # title
 ray of illuminati
+<in> eurobeat
 
 
 <!-- really constant high energy, stuff like hardcore and pumpcore and stuff -->
 ## CORE
-
+# artist
+t+pazolite
+*1110.lambda
+# title
+critical point
+bangin' burst 
 
 <!-- quiet singing or music etc -->
 ## ZEN
@@ -56,6 +87,11 @@ ray of illuminati
 ## OLD-CHEESY
 # artist
 croove
+
+
+## RITSUDOU
+# artist
+nato
 
 
 ## EPOP-MODERN
@@ -68,6 +104,15 @@ croove
 ## ROCKY
 # artist
 nien
+
+
+## INSTRUMENTAL
+# artist
+zun
+magnum opus
+demetori
+# title
+poinsettia
 
 
 
