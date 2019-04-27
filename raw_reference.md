@@ -12,6 +12,7 @@
 buta-otome
 iosys
 halozy
+pizuya's cell
 
 <!-- speaks for itself -->
 ## KPOP
@@ -45,8 +46,13 @@ izmizm
 nhato
 aran
 uno
+unatra
+yamato mizuki
+esquaria
+okash
 # title
 amorous attention
+cloudy with intermittent rain
 
 <!-- stuff like house or trance, that has like a constant beat or sth -->
 ## CLUB
@@ -54,7 +60,10 @@ amorous attention
 hatsunetsumiko's
 yuuhei satellite
 sumijun
-
+izna
+babbe music
+alstroemia records
+eastnewsound
 # title
 bluhende nacht
 <!-- ask the wind -->
@@ -66,6 +75,8 @@ a-one
 dave rodgers
 sound holic
 njk record
+tis
+tis&klavia
 # title
 ray of illuminati
 <in> eurobeat
@@ -92,6 +103,7 @@ croove
 ## RITSUDOU
 # artist
 nato
+leaf
 
 
 ## EPOP-MODERN
@@ -111,9 +123,14 @@ nien
 zun
 magnum opus
 demetori
+ayatsugu_otowa
 # title
 poinsettia
 
+## RAP-CHILL
+# artist
+tamaonsen
+魂音泉
 
 
 <!--  -->

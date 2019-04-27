@@ -91,7 +91,7 @@ class FolderReference:
 def setup_folder_reference():
     ref = FolderReference()
 
-    opened_ref_file = open(os.path.join(os.getcwd(), RAW_REFERENCE_FILE))
+    opened_ref_file = open(os.path.join(os.getcwd(), RAW_REFERENCE_FILE), 'r', -1, 'utf-8')
     ref_lines = opened_ref_file.readlines()
     opened_ref_file.close()
 

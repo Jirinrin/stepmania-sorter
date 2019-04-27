@@ -19,12 +19,17 @@ def format_title(raw_previous_title: str, labels: List[str], artist: str = None)
     # als previous title al labels heeft snij dat deel dan eerst weg
     new_labels = map(lambda l: l.split(':')[-1].strip(), labels)
     previous_title = raw_previous_title.strip()
-    if raw_previous_title.startswith('<') and '>' in raw_previous_title:
-        previous_title = raw_previous_title.split('>')[1].strip()
 
-    return f'{ artist + " - " if artist else ("<" + ", ".join(new_labels) + "> " if labels else "") }{previous_title}'
-    
+    # temp
+    # if previous_title.startswith('<') and '>' in previous_title:
+    #     previous_title = previous_title.split('>')[1].strip()
 
+    if previous_title.endswith('>') and '<' in previous_title:
+        previous_title = '<'.join(previous_title.split('<')[0:-1]).strip()
+
+    if artist:
+        return f'{artist} - {previous_title}'
+    return f'{previous_title}{ " <" + ", ".join(new_labels) + ">" if labels else "" }'
 
 def main(check_diff: bool = False):
     
@@ -171,4 +176,6 @@ en missch in het raw ding ook namen met puntkommas delimiten ofzo zodat meer ove
 split artiesten op 'feat' (?)
  
 labels toch aan rechterkant van title?
+
+iets van tussenhaakjes in de reference voor termen die weggelaten mogen worden?
 '''
