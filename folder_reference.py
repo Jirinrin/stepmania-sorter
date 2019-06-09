@@ -11,7 +11,7 @@ MATCHING_THRESHOLD = 0.8
 CRITERION_PRIORITIES = {
     'pack':   0,
     'artist': 1,
-    'title':   2
+    'title':  2,
 }
 
 def has_higher_priority(current_criterion: str, old_criterion: str) -> int:

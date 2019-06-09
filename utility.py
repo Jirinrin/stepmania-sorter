@@ -11,7 +11,7 @@ def similar(string_1: str, string_2: str, s2_subtitle: str = ''):
     # print(string_1, string_2)
     if '<in>' in string1:
         string1 =  string1.split('<in>')[1]
-        if string1 in string2 + s2_subtitle:
+        if string1 in string2 + s2_subtitle.lower():
             return 1
     # make thing for <sub> so that it checks with subtitle
     # make thing so that you can specify what artist belongs to a track in case of a homonymous track

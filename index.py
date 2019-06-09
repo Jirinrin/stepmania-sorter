@@ -9,7 +9,6 @@ from folder_reference import FOLDER_REFERENCE as FR
 print()
 
 SONGS_DIR = r'F:\voorSnelkoppelingen\H\OpenITG\Songs'
-# NEW_SONGS_DIR = r'F:\voorSnelkoppelingen\H\OpenITG\SongsOrganised'
 
 GLITCHINESS_CHARS_THRESHOLD = 150
 EASY_THRESHOLD = 6
