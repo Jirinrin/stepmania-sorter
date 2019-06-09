@@ -1,7 +1,7 @@
 <!-- jpoppy, anime style &stuff. novelty-type music -->
 ## JPOP
 # artist
-
+takada akatsuki
 # title
   
 # pack
@@ -13,6 +13,8 @@ buta-otome
 iosys
 halozy
 pizuya's cell
+reol
+yousei teikoku
 
 <!-- speaks for itself -->
 ## KPOP
@@ -20,6 +22,7 @@ pizuya's cell
 
 # artist
 forte escape
+bermei.inazawa
 
 
 <!-- wubby, glitchy -->
@@ -31,9 +34,11 @@ m2u
 nekomata master
 taishi
 camellia
+かめりあ
+<in> camellia
 lapix
 rin
-ocelot
+<in> ocelot
 function phantom
 c-show
 usao
@@ -50,9 +55,26 @@ unatra
 yamato mizuki
 esquaria
 okash
+ginkiha
+hommarju
+teminite
+teminite & panda eyes
+iriss
+ginsuke feat. macne nana
+tsukasa
+esti
+mue
+u1 overground
 # title
 amorous attention
 cloudy with intermittent rain
+multiponponpon
+
+## FAST
+# artist
+dimrain47
+infected mushroom
+rche
 
 <!-- stuff like house or trance, that has like a constant beat or sth -->
 ## CLUB
@@ -70,6 +92,8 @@ bluhende nacht
 
 <!-- eurobeat -->
 ## EUROBEAT
+# pack
+<in> eurobeat
 # artist
 a-one
 dave rodgers
@@ -77,9 +101,12 @@ sound holic
 njk record
 tis
 tis&klavia
+axel k.
+kick & punch
 # title
-ray of illuminati
 <in> eurobeat
+ray of illuminati
+mermaid girl
 
 
 <!-- really constant high energy, stuff like hardcore and pumpcore and stuff -->
@@ -87,6 +114,7 @@ ray of illuminati
 # artist
 t+pazolite
 *1110.lambda
+p*light
 # title
 critical point
 bangin' burst 
@@ -98,24 +126,38 @@ bangin' burst
 ## OLD-CHEESY
 # artist
 croove
+shinji hosoe
+hosoe shinji
+mystic moon
+cranky
+kid whatever
 
 
 ## RITSUDOU
 # artist
 nato
 leaf
-
+ryu
+ryu*
+yooh
+kors k
 
 ## EPOP-MODERN
-
+carly rae jepsen
+ke$ha
+lady gaga
 
 ## EPOP-RETRO
 # artist
 3rd coast
+aqua
+basshunter
 
 ## ROCKY
 # artist
 nien
+pendulum
+rammstein
 
 
 ## INSTRUMENTAL
@@ -124,6 +166,8 @@ zun
 magnum opus
 demetori
 ayatsugu_otowa
+alicia*
+tatsh
 # title
 poinsettia
 
@@ -131,6 +175,10 @@ poinsettia
 # artist
 tamaonsen
 魂音泉
+
+## FUNKY
+# artist
+dirty androids
 
 
 <!--  -->
@@ -147,6 +195,9 @@ Touhou Fujinya
 Touhou Gensouyou ~ Illusionary Dance Fantasy
 Undefined Fantastic Original Simfiles
 
+# title
+heian inferno
+
 <!-- has voice of a vocaloid in it -->
 ### VOCALOID : V
 # pack
@@ -154,13 +205,15 @@ Vocaloid Project Pad Pack
 Vocaloid Project Pad Pack 2nd
 Vocaloid Project Pad Pack 3rd
 Vocaloid Project Pad Pack 4th
+# artist
+<in> hatsune miku
 # title
 
 
 <!-- has nanahira-or-so-like cute highpitched voice in it -->
 ### DENPA : D
 # artist
-nanahira
+<in> nanahira
 
 
 ### ORIGINAL : 
