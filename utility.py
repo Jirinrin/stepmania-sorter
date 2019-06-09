@@ -13,6 +13,8 @@ def similar(string_1: str, string_2: str, s2_subtitle: str = ''):
         string1 =  string1.split('<in>')[1]
         if string1 in string2 + s2_subtitle:
             return 1
+    # make thing for <sub> so that it checks with subtitle
+    # make thing so that you can specify what artist belongs to a track in case of a homonymous track
     
     return SequenceMatcher(None, string1, string2).ratio()
 

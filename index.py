@@ -178,4 +178,15 @@ split artiesten op 'feat' (?)
 labels toch aan rechterkant van title?
 
 iets van tussenhaakjes in de reference voor termen die weggelaten mogen worden?
+
+een of andere support voor subtitle erbij om bijv. te distinguishen tussen 2 liedjes die zelfde main naam hebben
+
+makkelijke liedjes _echt_ ergens heen verplaatsen want ga toch nooit spelen ofzo
+
+spul van een field kan over meerdere lijnen zijn! => bijv. 'bpms' wat over meerdere regels gaat
+
+verschillende spellingen van 1 artiest / whatever op 1 regel door bijv `//` ertussen
+
+zorg dat de matchende dingen meer prio krijgen dan dingen die via <in> gematched zijn?
+slash bijv. <!> of bijv. <prio=2> met default 1 zodat je dat kan configureren 
 '''
