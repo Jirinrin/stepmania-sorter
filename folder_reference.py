@@ -79,6 +79,10 @@ class FolderReference:
                     for instance in instances:
                         if similar(instance, song_object[criterion]) > MATCHING_THRESHOLD:
                             object_labels.append(label)
+                            break
+                    else:
+                        continue
+                    break
 
         return {
             'collection': best_match['collection'],
